@@ -33,7 +33,7 @@ The project consists of three main components:
    - Chat interface for asking questions
    - Session state management
 
-3. **Colab Notebook** (RAG_(Retrieval_Augmented_Generation).ipynb.ipynb)):
+3. **Colab Notebook** (RAG_(Retrieval_Augmented_Generation).ipynb):
    - Step-by-step tutorial implementation
    - Detailed explanations of each RAG component
    - Executable demonstration
