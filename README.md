@@ -50,7 +50,7 @@ The project consists of three main components:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/Retrieval-Augmented-Generation-Workshop.git
+   git clone https://github.com/AnalyticAce/Retrieval-Augmented-Generation-Workshop.git
    cd Retrieval-Augmented-Generation-Workshop
    ```
 
@@ -80,6 +80,9 @@ streamlit run streamlit_app.py
 3. Click "Process Document" to analyze the document
 4. Ask questions in the chat interface
 5. View the AI-generated answers based on document content
+
+### Streamlit UI
+![UI](assets/interphase.png)
 
 ## Technical Details
 
