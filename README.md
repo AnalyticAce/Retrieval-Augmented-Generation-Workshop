@@ -2,7 +2,36 @@
 
 This workshop demonstrates how to build an intelligent document Q&A system using Retrieval-Augmented Generation (RAG).
 
-## Overview
+## What is RAG and Why It's Important ?
+RAG is a framework that combines information retrieval with text generation to create AI systems that produce more accurate, factual, and contextually relevant responses.
+
+![UI](assets/diagram.png)
+
+### How RAG Works
+1. Retrieval Phase: When a user asks a question, RAG first searches through a knowledge base (documents, databases, etc.) to find the most relevant information.
+
+2. Augmentation Phase: The retrieved information is injected as context into the prompt sent to a large language model (LLM).
+
+3. Generation Phase: The LLM generates a response based on both its pre-trained knowledge and the specific retrieved context.
+
+## Why RAG is Important
+
+1. Improved Accuracy: By grounding responses in specific source material, RAG reduces hallucinations and factual errors common in pure LLM responses.
+
+2. Up-to-date Information: RAG can access the latest information from your documents, overcoming the limitation of LLMs being trained on older data.
+
+3. Domain Specificity: Enables LLMs to answer questions about specialized or proprietary information not present in their training data.
+
+4. Source Attribution: RAG can provide references to the source documents, increasing transparency and trustworthiness.
+
+5. Lower Costs: Smaller, more efficient models can be used since they're augmented with external knowledge rather than needing to memorize everything.
+
+6. Privacy & Control: Organizations can keep sensitive information in their own knowledge base rather than sending it to external LLM providers.
+
+RAG represents an important evolution in AI systems, creating a bridge between traditional search and modern generative AI to deliver more reliable and useful responses.
+
+
+## Workshop/Project Overview
 
 This project implements a RAG-based system that allows users to:
 1. Upload PDF documents
