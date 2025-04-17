@@ -12,7 +12,7 @@ RAG is a framework that combines information retrieval with text generation to c
 
 3. Generation Phase: The LLM generates a response based on both its pre-trained knowledge and the specific retrieved context.
 
-![Diagram](assets/diagram.png)
+![Diagram](assets/diagram1.png)
 
 ## Why RAG is Important
 
