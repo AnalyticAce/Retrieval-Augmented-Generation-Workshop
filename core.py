@@ -72,7 +72,7 @@ def ask_question(qa_chain, query):
     """Run a query through the QA chain."""
     return qa_chain.invoke(query)
 
-def pipeline(filename="data/B-AIA-500_Gomoku.pdf", user_query="What is the main topic of the document?"):
+def pipeline(filename="data/B-SVR-500_project.pdf", user_query="What is the goal of the project in two-three small sentences"):
     """Main function to run the entire pipeline."""
     # Step 1: Load environment variables
     hf_token, deepseek_api_key, deepseek_api_base = load_environment_variables()

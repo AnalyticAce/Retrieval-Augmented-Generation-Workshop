@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 import os
 from core import (
     load_environment_variables,
@@ -34,6 +35,7 @@ if "qa_chain" not in st.session_state:
 with st.sidebar:
     st.image("assets/langchain.png", width=250)
     st.title("Document Upload")
+    st.divider()
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
     
     if uploaded_file is not None:
@@ -66,6 +68,8 @@ with st.sidebar:
 
     if st.session_state.uploaded_file:
         st.info(f"Current document: {st.session_state.uploaded_file}")
+    
+    st.caption("Powered by LangChain and DeepSeek LLM")
 
 st.title("AI Document Assistant")
 
@@ -81,6 +85,13 @@ def pipeline(prompt):
     response = ask_question(st.session_state.qa_chain, prompt)
     return response["result"]
 
+def pipeline_stream(prompt):
+    if st.session_state.qa_chain is None:
+        yield "Please upload and process a document first."
+    else:
+        for chunk in ask_question(st.session_state.qa_chain, prompt)["result"]:
+            yield chunk
+
 if prompt := st.chat_input("Ask about the uploaded document..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     
@@ -89,10 +100,21 @@ if prompt := st.chat_input("Ask about the uploaded document..."):
 
     with st.chat_message("assistant", avatar="assets/image.png"):
         with st.spinner("Searching knowledge base..."):
-            response = pipeline(prompt)
-            st.write(response)
-    
-    st.session_state.messages.append({"role": "assistant", "content": response})
+            collected_response = [""]
+
+            def stream_and_collect():
+                for chunk in pipeline_stream(prompt):
+                    collected_response[0] += chunk
+                    time.sleep(0.01)
+                    yield chunk
+
+            st.write_stream(stream_and_collect())
+
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": collected_response[0]
+        })
+
 
 if os.path.exists("temp_upload.pdf"):
     try:
